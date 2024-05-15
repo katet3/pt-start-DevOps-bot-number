@@ -5,6 +5,12 @@ from text_processing import find_email, find_phone_number
 from remote_log_fetcher import get_latest_replication_logs
 import logging
 
+
+import os
+from dotenv import load_dotenv
+TOKEN = os.getenv('TOKEN')
+
+
 logging.basicConfig(
     filename='bot.log',
     filemode='a',
@@ -12,8 +18,6 @@ logging.basicConfig(
     level=logging.INFO
 )
 logging.info("Запуск бота")
-
-TOKEN = '6820840931:AAHzBeJl1uH0_aIp7E4WK_Fr0UZHc6aTqi0'
 
 INPUT_TEXT, INPUT_CONFIRMATION = range(2)
 

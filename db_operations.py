@@ -1,7 +1,17 @@
 import psycopg2
 
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
 def connect_db():
-    return psycopg2.connect(dbname="mydatabase", user="postgres", password="Qq12345", host="192.168.1.60")
+    return psycopg2.connect(
+        dbname=os.getenv('DB_DATABASE'),
+        user=os.getenv('DB_USER'),
+        password=os.getenv('DB_PASSWORD'),
+        host=os.getenv('DB_HOST')
+    )
 
 def fetch_emails():
     conn = connect_db()
